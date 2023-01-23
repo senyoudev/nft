@@ -16,10 +16,6 @@ contract CodeMavricksNFTs is ERC721 {
 
     constructor() ERC721("leprogrammermarocain", "pgmar") {}
 
-  function _baseURI() internal pure override returns (string memory) {
-        return "https://gateway.pinata.cloud/ipfs/QmZeSmVsWZEdbK89pu56JBcc1REzrdc5sKGqPC55yqW56d";
-    }
-
     function mint(address to)
         public returns (uint256)
     {
@@ -34,5 +30,14 @@ contract CodeMavricksNFTs is ERC721 {
     function ownerOf(uint256 _tokenId) public view override returns(address) {
       require(tokenExists[_tokenId],"token does not exist");
       return tokenOwner[_tokenId];
+    }
+
+    function _baseURI() internal pure override returns (string memory) {
+      return "ipfs://QmWZVU3tmn59N7jw241nk2ZgE1q8i2MwUbWKJjyLk141k1/";
+    }
+
+    function tokenURI(uint256 tokenId) public view virtual override returns(string memory) {
+      string memory currentBaseURI = _baseURI();
+      return bytes(currentBaseURI).length > 0 ? string(abi.encodePacked(currentBaseURI,Strings.toString(tokenId),".json")) : "";
     }
 }
