@@ -12,7 +12,7 @@ module.exports = {
     },
        goerli: {
       provider: function() { 
-       return new HDWalletProvider(mnemonic, "https://goerli.infura.io/v3/your_infura_token");
+       return new HDWalletProvider(mnemonic, "https://goerli.infura.io/v3/");
       },
       network_id: 5,
       timeoutBlocks: 200,

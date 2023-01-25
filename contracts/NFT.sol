@@ -36,8 +36,17 @@ contract CodeMavricksNFTs is ERC721 {
       return "ipfs://QmWZVU3tmn59N7jw241nk2ZgE1q8i2MwUbWKJjyLk141k1/";
     }
 
-    function tokenURI(uint256 tokenId) public view virtual override returns(string memory) {
-      string memory currentBaseURI = _baseURI();
-      return bytes(currentBaseURI).length > 0 ? string(abi.encodePacked(currentBaseURI,Strings.toString(tokenId),".json")) : "";
-    }
+  function tokenURI(uint256 tokenId)
+    public
+    view
+    virtual
+    override
+    returns (string memory)
+  {
+    
+    string memory currentBaseURI = _baseURI();
+    return bytes(currentBaseURI).length > 0
+        ? string(abi.encodePacked(currentBaseURI, Strings.toString(tokenId), ".json"))
+        : "";
+  }
 }
